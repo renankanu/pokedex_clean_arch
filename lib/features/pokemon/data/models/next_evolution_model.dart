@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+import 'package:pokedex_clean_arch/features/pokemon/domain/entities/entities.dart';
 
 class NextEvolutionModel extends Equatable {
   final String num;
@@ -26,6 +27,12 @@ class NextEvolutionModel extends Equatable {
 
   factory NextEvolutionModel.fromJson(String source) =>
       NextEvolutionModel.fromMap(json.decode(source));
+
+  NextEvolution toEntity() => NextEvolution(
+        num: num,
+        name: name,
+        img: '',
+      );
 
   @override
   List<Object> get props => [num, name];
