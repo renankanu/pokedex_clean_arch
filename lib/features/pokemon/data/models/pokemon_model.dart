@@ -9,7 +9,7 @@ class PokemonModel extends Equatable {
   final String num;
   final String name;
   final String img;
-  final List<String> types;
+  final List<String> type;
   final String height;
   final String weight;
   final List<String> weaknesses;
@@ -20,7 +20,7 @@ class PokemonModel extends Equatable {
     required this.num,
     required this.name,
     required this.img,
-    required this.types,
+    required this.type,
     required this.height,
     required this.weight,
     required this.weaknesses,
@@ -33,7 +33,7 @@ class PokemonModel extends Equatable {
       'num': num,
       'name': name,
       'img': img,
-      'types': types,
+      'types': type,
       'height': height,
       'weight': weight,
       'weaknesses': weaknesses,
@@ -47,12 +47,12 @@ class PokemonModel extends Equatable {
       num: map['num'] ?? '',
       name: map['name'] ?? '',
       img: map['img'] ?? '',
-      types: List<String>.from(map['types']),
+      type: List<String>.from(map['type']),
       height: map['height'] ?? '',
       weight: map['weight'] ?? '',
       weaknesses: List<String>.from(map['weaknesses']),
       nextEvolution: List<NextEvolutionModel>.from(
-          map['nextEvolution']?.map((x) => NextEvolutionModel.fromMap(x))),
+          map['next_evolution']?.map((x) => NextEvolutionModel.fromMap(x))),
     );
   }
 
@@ -66,7 +66,7 @@ class PokemonModel extends Equatable {
         num: num,
         name: name,
         img: img,
-        types: types,
+        types: type,
         height: height,
         weight: weight,
         weaknesses: weaknesses,
@@ -81,7 +81,7 @@ class PokemonModel extends Equatable {
       num,
       name,
       img,
-      types,
+      type,
       height,
       weight,
       weaknesses,
