@@ -27,7 +27,7 @@ class PokemonModel extends Equatable {
     required this.nextEvolution,
   });
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return {
       'id': id,
       'num': num,
@@ -55,8 +55,6 @@ class PokemonModel extends Equatable {
           map['next_evolution']?.map((x) => NextEvolutionModel.fromMap(x))),
     );
   }
-
-  String toJson() => json.encode(toMap());
 
   factory PokemonModel.fromJson(String source) =>
       PokemonModel.fromMap(json.decode(source));
