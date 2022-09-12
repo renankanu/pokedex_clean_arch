@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
 import 'package:pokedex_clean_arch/features/pokemon/data/models/next_evolution_model.dart';
 import 'package:pokedex_clean_arch/features/pokemon/domain/entities/entities.dart';
@@ -41,7 +39,7 @@ class PokemonModel extends Equatable {
     };
   }
 
-  factory PokemonModel.fromMap(Map<String, dynamic> map) {
+  factory PokemonModel.fromJson(Map<String, dynamic> map) {
     return PokemonModel(
       id: map['id']?.toInt() ?? 0,
       num: map['num'] ?? '',
@@ -55,9 +53,6 @@ class PokemonModel extends Equatable {
           map['next_evolution']?.map((x) => NextEvolutionModel.fromMap(x))),
     );
   }
-
-  factory PokemonModel.fromJson(String source) =>
-      PokemonModel.fromMap(json.decode(source));
 
   Pokemon toEntity() => Pokemon(
         id: id,

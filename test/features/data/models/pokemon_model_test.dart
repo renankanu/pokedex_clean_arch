@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pokedex_clean_arch/features/pokemon/data/models/next_evolution_model.dart';
 import 'package:pokedex_clean_arch/features/pokemon/data/models/pokemon_model.dart';
@@ -62,7 +64,8 @@ void main() {
   group('fromJson', () {
     test('should return a valid model fromJson', () {
       //act
-      final result = PokemonModel.fromJson(fixture('pokemon_model.json'));
+      final result =
+          PokemonModel.fromJson(json.decode(fixture('pokemon_model.json')));
       //assert
       expect(result, equals(tPokemonModel));
     });
