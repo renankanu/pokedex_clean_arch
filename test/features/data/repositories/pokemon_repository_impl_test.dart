@@ -20,60 +20,65 @@ void main() {
     repository = PokemonRepositoryImpl(mockRemoteDataSource);
   });
 
-  const tPokemonModel = PokemonModel(
-    id: 1,
-    num: '001',
-    name: 'Bulbasaur',
-    img: 'http://www.serebii.net/pokemongo/pokemon/001.png',
-    type: ['Grass', 'Poison'],
-    height: '0.71 m',
-    weight: '6.9 kg',
-    weaknesses: ['Fire', 'Ice', 'Flying', 'Psychic'],
-    nextEvolution: [
-      NextEvolutionModel(
-        num: '002',
-        name: 'Ivysaur',
-      ),
-      NextEvolutionModel(
-        num: '003',
-        name: 'Venusaur',
-      )
-    ],
-  );
+  const tPokemonModel = [
+    PokemonModel(
+      id: 1,
+      num: '001',
+      name: 'Bulbasaur',
+      img: 'http://www.serebii.net/pokemongo/pokemon/001.png',
+      type: ['Grass', 'Poison'],
+      height: '0.71 m',
+      weight: '6.9 kg',
+      weaknesses: ['Fire', 'Ice', 'Flying', 'Psychic'],
+      nextEvolution: [
+        NextEvolutionModel(
+          num: '002',
+          name: 'Ivysaur',
+        ),
+        NextEvolutionModel(
+          num: '003',
+          name: 'Venusaur',
+        )
+      ],
+    )
+  ];
 
-  const tPokemon = Pokemon(
-    id: 1,
-    num: '001',
-    name: 'Bulbasaur',
-    img: 'http://www.serebii.net/pokemongo/pokemon/001.png',
-    types: ['Grass', 'Poison'],
-    height: '0.71 m',
-    weight: '6.9 kg',
-    weaknesses: ['Fire', 'Ice', 'Flying', 'Psychic'],
-    nextEvolution: [
-      NextEvolution(
-        img: '',
-        num: '002',
-        name: 'Ivysaur',
-      ),
-      NextEvolution(
-        img: '',
-        num: '003',
-        name: 'Venusaur',
-      ),
-    ],
-  );
+  const tPokemon = [
+    Pokemon(
+      id: 1,
+      num: '001',
+      name: 'Bulbasaur',
+      img: 'http://www.serebii.net/pokemongo/pokemon/001.png',
+      types: ['Grass', 'Poison'],
+      height: '0.71 m',
+      weight: '6.9 kg',
+      weaknesses: ['Fire', 'Ice', 'Flying', 'Psychic'],
+      nextEvolution: [
+        NextEvolution(
+          img: '',
+          num: '002',
+          name: 'Ivysaur',
+        ),
+        NextEvolution(
+          img: '',
+          num: '003',
+          name: 'Venusaur',
+        ),
+      ],
+    )
+  ];
 
   group('get all pokemons', () {
     test('should return all pokemons', () async {
       //arrange
       when(mockRemoteDataSource.getAllPokemons())
-          .thenAnswer((_) async => [tPokemonModel]);
+          .thenAnswer((_) async => tPokemonModel);
+      //act
+      final result = await repository.getAllPokemons();
+      //assert
+      verify(mockRemoteDataSource.getAllPokemons());
+      expect(result, equals(const Right(tPokemon)));
     });
     //act
-    final result = repository.getAllPokemons();
-    //assert
-    verify(mockRemoteDataSource.getAllPokemons());
-    expect(result, equals(const Right(tPokemon)));
   });
 }
