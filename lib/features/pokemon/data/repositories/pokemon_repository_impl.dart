@@ -20,6 +20,7 @@ class PokemonRepositoryImpl implements PokemonRepository {
       for (var pokemonModel in result) {
         listPokemon.add(pokemonModel.toEntity());
       }
+      final a = Right(listPokemon);
       return Right(listPokemon);
     } on ServerException {
       return const Left(ServerFailure(''));

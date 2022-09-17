@@ -34,5 +34,8 @@ class NextEvolutionModel extends Equatable {
       );
 
   @override
-  List<Object> get props => [num, name];
+  List<Object> get props => [
+        num,
+        name,
+      ];
 }

@@ -6,7 +6,7 @@ import 'package:pokedex_clean_arch/features/pokemon/data/datasources/remote_data
 import 'package:pokedex_clean_arch/features/pokemon/data/models/next_evolution_model.dart';
 import 'package:pokedex_clean_arch/features/pokemon/data/models/pokemon_model.dart';
 import 'package:pokedex_clean_arch/features/pokemon/data/repositories/pokemon_repository_impl.dart';
-import 'package:pokedex_clean_arch/features/pokemon/domain/entities/entities.dart';
+import 'package:pokedex_clean_arch/features/pokemon/domain/entities/pokemon.dart';
 
 import 'pokemon_repository_impl_test.mocks.dart';
 
@@ -44,30 +44,10 @@ void main() {
       )
     ];
 
-    final tPokemon = [
-      const Pokemon(
-        id: 1,
-        num: '001',
-        name: 'Bulbasaur',
-        img: 'http://www.serebii.net/pokemongo/pokemon/001.png',
-        types: ['Grass', 'Poison'],
-        height: '0.71 m',
-        weight: '6.9 kg',
-        weaknesses: ['Fire', 'Ice', 'Flying', 'Psychic'],
-        nextEvolution: [
-          NextEvolution(
-            img: '',
-            num: '002',
-            name: 'Ivysaur',
-          ),
-          NextEvolution(
-            img: '',
-            num: '003',
-            name: 'Venusaur',
-          ),
-        ],
-      )
-    ];
+    final List<Pokemon> tPokemon = [];
+    for (var pokemon in tPokemonModel) {
+      tPokemon.add(pokemon.toEntity());
+    }
     test('should return all pokemons', () async {
       //arrange
       when(mockRemoteDataSource.getAllPokemons())
@@ -76,9 +56,7 @@ void main() {
       final result = await repository.getAllPokemons();
       //assert
       verify(mockRemoteDataSource.getAllPokemons());
-      final a = result;
-      final b = Right(tPokemon);
-      expect(a, equals(b));
+      expect(result, equals(Right(tPokemon)));
     });
     //act
   });

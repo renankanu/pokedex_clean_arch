@@ -3,6 +3,18 @@ import 'package:pokedex_clean_arch/features/pokemon/data/models/next_evolution_m
 import 'package:pokedex_clean_arch/features/pokemon/domain/entities/entities.dart';
 
 class PokemonModel extends Equatable {
+  const PokemonModel({
+    required this.id,
+    required this.num,
+    required this.name,
+    required this.img,
+    required this.type,
+    required this.height,
+    required this.weight,
+    required this.weaknesses,
+    required this.nextEvolution,
+  });
+
   factory PokemonModel.fromJson(Map<String, dynamic> map) {
     return PokemonModel(
       id: map['id']?.toInt() ?? 0,
@@ -18,17 +30,6 @@ class PokemonModel extends Equatable {
     );
   }
 
-  const PokemonModel({
-    required this.id,
-    required this.num,
-    required this.name,
-    required this.img,
-    required this.type,
-    required this.height,
-    required this.weight,
-    required this.weaknesses,
-    required this.nextEvolution,
-  });
   final int id;
   final String num;
   final String name;
@@ -67,17 +68,15 @@ class PokemonModel extends Equatable {
       );
 
   @override
-  List<Object> get props {
-    return [
-      id,
-      num,
-      name,
-      img,
-      type,
-      height,
-      weight,
-      weaknesses,
-      nextEvolution,
-    ];
-  }
+  List<Object> get props => [
+        id,
+        num,
+        name,
+        img,
+        type,
+        height,
+        weight,
+        weaknesses,
+        nextEvolution,
+      ];
 }

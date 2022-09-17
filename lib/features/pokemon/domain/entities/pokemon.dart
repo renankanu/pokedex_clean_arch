@@ -25,17 +25,15 @@ class Pokemon extends Equatable {
   final List<NextEvolution> nextEvolution;
 
   @override
-  List<Object> get props {
-    return [
-      id,
-      num,
-      name,
-      img,
-      types,
-      height,
-      weight,
-      weaknesses,
-      nextEvolution,
-    ];
-  }
+  List<Object> get props => [
+        id,
+        num,
+        name,
+        img,
+        types,
+        height,
+        weight,
+        weaknesses,
+        nextEvolution,
+      ];
 }

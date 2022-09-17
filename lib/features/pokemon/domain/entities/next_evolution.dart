@@ -11,5 +11,9 @@ class NextEvolution extends Equatable {
   final String name;
 
   @override
-  List<Object> get props => [img, num, name];
+  List<Object> get props => [
+        img,
+        num,
+        name,
+      ];
 }
