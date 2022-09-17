@@ -8,22 +8,24 @@ import 'package:pokedex_clean_arch/features/pokemon/domain/entities/entities.dar
 import '../../../fixtures/fixture_reader.dart';
 
 void main() {
-  const tPokemonModel = PokemonModel(
+  final tPokemonModel = PokemonModel(
     id: 1,
-    num: '001',
+    number: '001',
     name: 'Bulbasaur',
     img: 'http://www.serebii.net/pokemongo/pokemon/001.png',
-    type: ['Grass', 'Poison'],
+    types: ['Grass', 'Poison'],
     height: '0.71 m',
     weight: '6.9 kg',
     weaknesses: ['Fire', 'Ice', 'Flying', 'Psychic'],
     nextEvolution: [
       NextEvolutionModel(
-        num: '002',
+        img: '',
+        number: '002',
         name: 'Ivysaur',
       ),
       NextEvolutionModel(
-        num: '003',
+        img: '',
+        number: '003',
         name: 'Venusaur',
       )
     ],
@@ -31,7 +33,7 @@ void main() {
 
   const tPokemon = Pokemon(
     id: 1,
-    num: '001',
+    number: '001',
     name: 'Bulbasaur',
     img: 'http://www.serebii.net/pokemongo/pokemon/001.png',
     types: ['Grass', 'Poison'],
@@ -41,25 +43,16 @@ void main() {
     nextEvolution: [
       NextEvolution(
         img: '',
-        num: '002',
+        number: '002',
         name: 'Ivysaur',
       ),
       NextEvolution(
         img: '',
-        num: '003',
+        number: '003',
         name: 'Venusaur',
       ),
     ],
   );
-
-  group('to entity', () {
-    test('should return a Pokemon entity', () {
-      //act
-      final result = tPokemonModel.toEntity();
-      //assert
-      expect(result, tPokemon);
-    });
-  });
 
   group('fromJson', () {
     test('should return a valid model fromJson', () {
@@ -81,7 +74,7 @@ void main() {
         "num": "001",
         "name": "Bulbasaur",
         "img": "http://www.serebii.net/pokemongo/pokemon/001.png",
-        "types": ["Grass", "Poison"],
+        "type": ["Grass", "Poison"],
         "height": "0.71 m",
         "weight": "6.9 kg",
         "weaknesses": ["Fire", "Ice", "Flying", "Psychic"],

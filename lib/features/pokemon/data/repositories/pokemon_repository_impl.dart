@@ -16,12 +16,7 @@ class PokemonRepositoryImpl implements PokemonRepository {
   Future<Either<Failure, List<Pokemon>>> getAllPokemons() async {
     try {
       final result = await remoteDataSource.getAllPokemons();
-      final List<Pokemon> listPokemon = [];
-      for (var pokemonModel in result) {
-        listPokemon.add(pokemonModel.toEntity());
-      }
-      final a = Right(listPokemon);
-      return Right(listPokemon);
+      return Right(result);
     } on ServerException {
       return const Left(ServerFailure(''));
     } on SocketException {

@@ -1,41 +1,25 @@
-import 'dart:convert';
-
-import 'package:equatable/equatable.dart';
 import 'package:pokedex_clean_arch/features/pokemon/domain/entities/entities.dart';
 
-class NextEvolutionModel extends Equatable {
-  factory NextEvolutionModel.fromJson(String source) =>
-      NextEvolutionModel.fromMap(json.decode(source));
+class NextEvolutionModel extends NextEvolution {
+  NextEvolutionModel({
+    required super.img,
+    required super.number,
+    required super.name,
+  });
 
-  factory NextEvolutionModel.fromMap(Map<String, dynamic> map) {
+  factory NextEvolutionModel.fromJson(Map<String, dynamic> json) {
     return NextEvolutionModel(
-      num: map['num'] ?? '',
-      name: map['name'] ?? '',
+      img: '',
+      number: json['num'],
+      name: json['name'],
     );
   }
 
-  const NextEvolutionModel({required this.num, required this.name});
-  final String num;
-  final String name;
-
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return {
-      'num': num,
+      'img': '',
+      'num': number,
       'name': name,
     };
   }
-
-  String toJson() => json.encode(toMap());
-
-  NextEvolution toEntity() => NextEvolution(
-        num: num,
-        name: name,
-        img: '',
-      );
-
-  @override
-  List<Object> get props => [
-        num,
-        name,
-      ];
 }

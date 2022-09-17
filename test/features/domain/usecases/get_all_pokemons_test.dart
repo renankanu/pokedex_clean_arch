@@ -21,7 +21,7 @@ void main() {
   const pokemons = [
     Pokemon(
       id: 1,
-      num: '001',
+      number: '001',
       name: 'Pokemon',
       img: 'https://www.testepokemon.com.br/',
       types: ['one', 'two'],
@@ -34,7 +34,7 @@ void main() {
       nextEvolution: [
         NextEvolution(
           img: 'https://www.testepokemon.com.br/',
-          num: '002',
+          number: '002',
           name: 'Pokemon 02',
         )
       ],

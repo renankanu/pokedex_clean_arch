@@ -5,7 +5,7 @@ import 'next_evolution.dart';
 class Pokemon extends Equatable {
   const Pokemon({
     required this.id,
-    required this.num,
+    required this.number,
     required this.name,
     required this.img,
     required this.types,
@@ -15,7 +15,7 @@ class Pokemon extends Equatable {
     required this.nextEvolution,
   });
   final int id;
-  final String num;
+  final String number;
   final String name;
   final String img;
   final List<String> types;
@@ -27,7 +27,7 @@ class Pokemon extends Equatable {
   @override
   List<Object> get props => [
         id,
-        num,
+        number,
         name,
         img,
         types,

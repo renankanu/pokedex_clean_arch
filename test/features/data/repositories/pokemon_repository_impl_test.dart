@@ -21,37 +21,36 @@ void main() {
   });
 
   group('get all pokemons', () {
-    final tPokemonModel = [
-      const PokemonModel(
-        id: 1,
-        num: '001',
-        name: 'Bulbasaur',
-        img: 'http://www.serebii.net/pokemongo/pokemon/001.png',
-        type: ['Grass', 'Poison'],
-        height: '0.71 m',
-        weight: '6.9 kg',
-        weaknesses: ['Fire', 'Ice', 'Flying', 'Psychic'],
-        nextEvolution: [
-          NextEvolutionModel(
-            num: '002',
-            name: 'Ivysaur',
-          ),
-          NextEvolutionModel(
-            num: '003',
-            name: 'Venusaur',
-          )
-        ],
-      )
-    ];
+    final tPokemonModel = PokemonModel(
+      id: 1,
+      number: '001',
+      name: 'Bulbasaur',
+      img: 'http://www.serebii.net/pokemongo/pokemon/001.png',
+      types: ['Grass', 'Poison'],
+      height: '0.71 m',
+      weight: '6.9 kg',
+      weaknesses: ['Fire', 'Ice', 'Flying', 'Psychic'],
+      nextEvolution: [
+        NextEvolutionModel(
+          img: '',
+          number: '002',
+          name: 'Ivysaur',
+        ),
+        NextEvolutionModel(
+          img: '',
+          number: '003',
+          name: 'Venusaur',
+        )
+      ],
+    );
 
-    final List<Pokemon> tPokemon = [];
-    for (var pokemon in tPokemonModel) {
-      tPokemon.add(pokemon.toEntity());
-    }
+    final List<PokemonModel> tPokemonsModel = [tPokemonModel];
+    final List<Pokemon> tPokemon = tPokemonsModel;
+
     test('should return all pokemons', () async {
       //arrange
       when(mockRemoteDataSource.getAllPokemons())
-          .thenAnswer((_) async => tPokemonModel);
+          .thenAnswer((_) async => tPokemonsModel);
       //act
       final result = await repository.getAllPokemons();
       //assert
