@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:pokedex_clean_arch/core/core.dart';
 import 'package:pokedex_clean_arch/features/pokemon/data/datasources/remote_data_source.dart';
 import 'package:pokedex_clean_arch/features/pokemon/data/models/next_evolution_model.dart';
 import 'package:pokedex_clean_arch/features/pokemon/data/models/pokemon_model.dart';
@@ -20,8 +21,8 @@ void main() {
     repository = PokemonRepositoryImpl(mockRemoteDataSource);
   });
 
-  const tPokemonModel = [
-    PokemonModel(
+  final tPokemonModel = [
+    const PokemonModel(
       id: 1,
       num: '001',
       name: 'Bulbasaur',
@@ -43,8 +44,8 @@ void main() {
     )
   ];
 
-  const tPokemon = [
-    Pokemon(
+  final tPokemon = [
+    const Pokemon(
       id: 1,
       num: '001',
       name: 'Bulbasaur',
@@ -77,7 +78,7 @@ void main() {
       final result = await repository.getAllPokemons();
       //assert
       verify(mockRemoteDataSource.getAllPokemons());
-      expect(result, equals(const Right(tPokemon)));
+      expect(result, equals(Right<Failure, List<Pokemon>>(tPokemon)));
     });
     //act
   });
