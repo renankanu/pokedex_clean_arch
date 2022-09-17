@@ -7,13 +7,13 @@ abstract class RemoteDataSource {
 }
 
 class RemoteDataSourceImpl implements RemoteDataSource {
-  final Dio dioClient;
-
   RemoteDataSourceImpl(this.dioClient);
+  final Dio dioClient;
 
   @override
   Future<List<PokemonModel>> getAllPokemons() async {
     final response = await dioClient.get(Urls.baseUrl);
+
     if (response.statusCode == 200) {
       return (response.data as List).map((pokemon) {
         return PokemonModel.fromJson(pokemon);

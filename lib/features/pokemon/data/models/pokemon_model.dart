@@ -3,42 +3,6 @@ import 'package:pokedex_clean_arch/features/pokemon/data/models/next_evolution_m
 import 'package:pokedex_clean_arch/features/pokemon/domain/entities/entities.dart';
 
 class PokemonModel extends Equatable {
-  final int id;
-  final String num;
-  final String name;
-  final String img;
-  final List<String> type;
-  final String height;
-  final String weight;
-  final List<String> weaknesses;
-  final List<NextEvolutionModel> nextEvolution;
-
-  const PokemonModel({
-    required this.id,
-    required this.num,
-    required this.name,
-    required this.img,
-    required this.type,
-    required this.height,
-    required this.weight,
-    required this.weaknesses,
-    required this.nextEvolution,
-  });
-
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'num': num,
-      'name': name,
-      'img': img,
-      'types': type,
-      'height': height,
-      'weight': weight,
-      'weaknesses': weaknesses,
-      'nextEvolution': nextEvolution.map((x) => x.toMap()).toList(),
-    };
-  }
-
   factory PokemonModel.fromJson(Map<String, dynamic> map) {
     return PokemonModel(
       id: map['id']?.toInt() ?? 0,
@@ -52,6 +16,41 @@ class PokemonModel extends Equatable {
       nextEvolution: List<NextEvolutionModel>.from(
           map['next_evolution']?.map((x) => NextEvolutionModel.fromMap(x))),
     );
+  }
+
+  const PokemonModel({
+    required this.id,
+    required this.num,
+    required this.name,
+    required this.img,
+    required this.type,
+    required this.height,
+    required this.weight,
+    required this.weaknesses,
+    required this.nextEvolution,
+  });
+  final int id;
+  final String num;
+  final String name;
+  final String img;
+  final List<String> type;
+  final String height;
+  final String weight;
+  final List<String> weaknesses;
+  final List<NextEvolutionModel> nextEvolution;
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'num': num,
+      'name': name,
+      'img': img,
+      'types': type,
+      'height': height,
+      'weight': weight,
+      'weaknesses': weaknesses,
+      'nextEvolution': nextEvolution.map((x) => x.toMap()).toList(),
+    };
   }
 
   Pokemon toEntity() => Pokemon(

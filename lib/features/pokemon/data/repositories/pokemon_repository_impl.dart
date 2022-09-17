@@ -9,9 +9,8 @@ import '../../../../core/errors/exception.dart';
 import '../datasources/remote_data_source.dart';
 
 class PokemonRepositoryImpl implements PokemonRepository {
-  final RemoteDataSource remoteDataSource;
-
   PokemonRepositoryImpl(this.remoteDataSource);
+  final RemoteDataSource remoteDataSource;
 
   @override
   Future<Either<Failure, List<Pokemon>>> getAllPokemons() async {

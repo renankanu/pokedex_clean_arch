@@ -4,9 +4,8 @@ import 'package:pokedex_clean_arch/features/pokemon/domain/entities/entities.dar
 import 'package:pokedex_clean_arch/features/pokemon/domain/repositories/pokemon_repository.dart';
 
 class GetAllPokemons {
-  final PokemonRepository pokemonRepository;
-
   GetAllPokemons(this.pokemonRepository);
+  final PokemonRepository pokemonRepository;
 
   Future<Either<Failure, List<Pokemon>>> call() async {
     return await pokemonRepository.getAllPokemons();
