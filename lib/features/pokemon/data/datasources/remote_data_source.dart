@@ -15,10 +15,9 @@ class RemoteDataSourceImpl implements RemoteDataSource {
   Future<List<PokemonModel>> getAllPokemons() async {
     final response = await dioClient.get(Urls.baseUrl);
     if (response.statusCode == 200) {
-      final listPokemonData = (response.data as List).map((pokemon) {
+      return (response.data as List).map((pokemon) {
         return PokemonModel.fromJson(pokemon);
       }).toList();
-      return listPokemonData;
     } else {
       throw ServerException();
     }
