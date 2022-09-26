@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pokedex_clean_arch/features/pokemon/domain/entities/pokemon.dart';
@@ -64,9 +65,17 @@ class ItemPokemon extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Image.network(
-            'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/${pokemon.number}.png',
+          CachedNetworkImage(
+            imageUrl: pokemon.img,
             height: 100,
+            placeholder: (_, __) => Center(
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation(
+                  Colors.white,
+                ),
+                strokeWidth: 2,
+              ),
+            ),
           ),
           Text(pokemon.name),
         ],
