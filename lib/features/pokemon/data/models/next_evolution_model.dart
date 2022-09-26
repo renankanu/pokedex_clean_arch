@@ -1,5 +1,7 @@
 import 'package:pokedex_clean_arch/features/pokemon/domain/entities/entities.dart';
 
+import '../../../../core/constants/urls_constants.dart';
+
 class NextEvolutionModel extends NextEvolution {
   NextEvolutionModel({
     required super.img,
@@ -9,7 +11,7 @@ class NextEvolutionModel extends NextEvolution {
 
   factory NextEvolutionModel.fromJson(Map<String, dynamic> json) {
     return NextEvolutionModel(
-      img: '',
+      img: Urls.currentImageByNum(json['num']),
       number: json['num'],
       name: json['name'],
     );

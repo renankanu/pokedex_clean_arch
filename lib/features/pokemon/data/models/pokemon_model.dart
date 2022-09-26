@@ -1,3 +1,4 @@
+import 'package:pokedex_clean_arch/core/core.dart';
 import 'package:pokedex_clean_arch/features/pokemon/domain/entities/entities.dart';
 
 import 'next_evolution_model.dart';
@@ -20,7 +21,7 @@ class PokemonModel extends Pokemon {
       id: json['id'],
       number: json['num'],
       name: json['name'],
-      img: json['img'],
+      img: Urls.currentImageByNum(json['num']),
       types: json['type'].cast<String>(),
       height: json['height'],
       weight: json['weight'],

@@ -11,19 +11,22 @@ void main() {
     id: 1,
     number: '001',
     name: 'Bulbasaur',
-    img: 'http://www.serebii.net/pokemongo/pokemon/001.png',
+    img:
+        'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/001.png',
     types: ['Grass', 'Poison'],
     height: '0.71 m',
     weight: '6.9 kg',
     weaknesses: ['Fire', 'Ice', 'Flying', 'Psychic'],
     nextEvolution: [
       NextEvolutionModel(
-        img: '',
+        img:
+            'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/002.png',
         number: '002',
         name: 'Ivysaur',
       ),
       NextEvolutionModel(
-        img: '',
+        img:
+            'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/003.png',
         number: '003',
         name: 'Venusaur',
       )
@@ -49,7 +52,8 @@ void main() {
         "id": 1,
         "num": "001",
         "name": "Bulbasaur",
-        "img": "http://www.serebii.net/pokemongo/pokemon/001.png",
+        "img":
+            "https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/001.png",
         "type": ["Grass", "Poison"],
         "height": "0.71 m",
         "weight": "6.9 kg",

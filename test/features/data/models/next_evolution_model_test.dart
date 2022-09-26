@@ -7,7 +7,8 @@ import '../../../fixtures/fixture_reader.dart';
 
 void main() {
   final tNextEvolutionModel = NextEvolutionModel(
-    img: '',
+    img:
+        'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/002.png',
     number: '002',
     name: 'Ivysaur',
   );
