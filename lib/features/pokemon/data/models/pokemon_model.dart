@@ -25,8 +25,10 @@ class PokemonModel extends Pokemon {
       height: json['height'],
       weight: json['weight'],
       weaknesses: json['weaknesses'].cast<String>(),
-      nextEvolution: List<NextEvolutionModel>.from(
-          json['next_evolution']?.map((x) => NextEvolutionModel.fromJson(x))),
+      nextEvolution: List<NextEvolutionModel>.from(json['next_evolution'] !=
+              null
+          ? json['next_evolution'].map((x) => NextEvolutionModel.fromJson(x))
+          : []),
     );
   }
 

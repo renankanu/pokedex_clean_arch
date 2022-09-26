@@ -11,9 +11,25 @@ class HomePage extends GetView<HomeController> {
       appBar: AppBar(
         title: const Text(''),
       ),
-      body: Obx(() => Container(
-            child: Text(controller.state?.name ?? ''),
-          )),
+      body: Obx(
+        () {
+          if (controller.hasError) {
+            return Container();
+          }
+          if (controller.isLoading) {
+            return CircularProgressIndicator();
+          }
+          return ListView.builder(
+            itemCount: controller.pokemons.length,
+            itemBuilder: (BuildContext context, int index) {
+              final pokemon = controller.pokemons[index];
+              return Container(
+                child: Text(pokemon.name),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }

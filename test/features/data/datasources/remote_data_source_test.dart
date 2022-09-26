@@ -23,15 +23,17 @@ void main() {
 
   group('get all pokemons', () {
     final dynamic tJson = json.decode(fixture('pokemon_model_list.json'));
-    final tPokemonModel =
-        (tJson as List).map((pokemon) => PokemonModel.fromJson(pokemon));
+    final tPokemonModel = [];
+    for (var element in tJson['pokemon'] as List) {
+      tPokemonModel.add(PokemonModel.fromJson(element));
+    }
     test(
       'should return pokemons with the response code is 200',
       () async {
         //arrange
         when(mockDio.get(any, options: anyNamed('options'))).thenAnswer(
           (_) async => Response(
-            data: tJson,
+            data: fixture('pokemon_model_list.json'),
             statusCode: 200,
             requestOptions: RequestOptions(
               path: '',

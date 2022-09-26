@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:pokedex_clean_arch/core/core.dart';
 import 'package:pokedex_clean_arch/features/pokemon/data/models/pokemon_model.dart';
@@ -15,7 +17,8 @@ class RemoteDataSourceImpl implements RemoteDataSource {
     final response = await dioClient.get(Urls.baseUrl);
 
     if (response.statusCode == 200) {
-      return (response.data as List).map((pokemon) {
+      final dataJson = json.decode(response.data as String);
+      return (dataJson['pokemon'] as List).map((pokemon) {
         return PokemonModel.fromJson(pokemon);
       }).toList();
     } else {
