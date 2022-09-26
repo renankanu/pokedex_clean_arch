@@ -17,7 +17,6 @@ class NextEvolutionModel extends NextEvolution {
 
   Map<String, dynamic> toJson() {
     return {
-      'img': '',
       'num': number,
       'name': name,
     };
