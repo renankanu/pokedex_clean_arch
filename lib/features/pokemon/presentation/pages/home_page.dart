@@ -10,9 +10,6 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        flexibleSpace: Container(),
-      ),
       body: Obx(
         () {
           if (controller.hasError) {
@@ -21,13 +18,23 @@ class HomePage extends GetView<HomeController> {
           if (controller.isLoading) {
             return CircularProgressIndicator();
           }
-          return ListView.builder(
-            padding: EdgeInsets.symmetric(horizontal: 12),
-            itemCount: controller.pokemons.length,
-            itemBuilder: (BuildContext context, int index) {
-              final pokemon = controller.pokemons[index];
-              return ItemPokemon(pokemon: pokemon);
-            },
+          return Column(
+            children: [
+              Container(
+                padding: EdgeInsets.only(top: kToolbarHeight),
+                child: Text('Pokédex'),
+              ),
+              Expanded(
+                child: ListView.builder(
+                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  itemCount: controller.pokemons.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    final pokemon = controller.pokemons[index];
+                    return ItemPokemon(pokemon: pokemon);
+                  },
+                ),
+              ),
+            ],
           );
         },
       ),
