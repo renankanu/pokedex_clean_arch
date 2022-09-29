@@ -10,6 +10,9 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        flexibleSpace: Container(),
+      ),
       body: Obx(
         () {
           if (controller.hasError) {
