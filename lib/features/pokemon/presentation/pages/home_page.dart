@@ -70,8 +70,15 @@ class ItemPokemon extends StatelessWidget {
           )
         ],
       ),
-      child: Column(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          Column(
+            children: [
+              Text('#${pokemon.number}'),
+              Text(pokemon.name),
+            ],
+          ),
           CachedNetworkImage(
             imageUrl: pokemon.img,
             height: 100,
@@ -84,7 +91,6 @@ class ItemPokemon extends StatelessWidget {
               ),
             ),
           ),
-          Text(pokemon.name),
         ],
       ),
     );
