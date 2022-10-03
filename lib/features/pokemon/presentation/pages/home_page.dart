@@ -4,6 +4,9 @@ import 'package:get/get.dart';
 import 'package:pokedex_clean_arch/features/pokemon/domain/entities/pokemon.dart';
 import 'package:pokedex_clean_arch/features/pokemon/presentation/controller/home_controller.dart';
 
+import '../../../../core/images.dart';
+import '../../../../core/models/type_pokemon.dart';
+
 class HomePage extends GetView<HomeController> {
   const HomePage({Key? key}) : super(key: key);
 
@@ -59,7 +62,7 @@ class ItemPokemon extends StatelessWidget {
       ),
       margin: EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
-        color: _getColorByType(pokemon.types[0]),
+        color: _getColorByType(pokemon.types[0]).pokemonColor,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
@@ -73,6 +76,7 @@ class ItemPokemon extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          Image.asset(_getColorByType(pokemon.types[0]).pathIcon),
           Column(
             children: [
               Text('#${pokemon.number}'),
@@ -96,46 +100,103 @@ class ItemPokemon extends StatelessWidget {
     );
   }
 
-  _getColorByType(String type) {
+  TypePokemon _getColorByType(String type) {
     switch (type) {
       case 'Normal':
-        return Color(0xFF9B9BA3);
+        return TypePokemon(
+          pokemonColor: Color(0xFF9B9BA3),
+          pathIcon: AppImages.icNormal,
+        );
       case 'Fire':
-        return Color(0xFFFF8713);
+        return TypePokemon(
+          pokemonColor: Color(0xFFFF8713),
+          pathIcon: AppImages.icFire,
+        );
       case 'Water':
-        return Color(0xFF68B5E5);
+        return TypePokemon(
+          pokemonColor: Color(0xFF68B5E5),
+          pathIcon: AppImages.icWater,
+        );
       case 'Grass':
-        return Color(0xFF34C677);
+        return TypePokemon(
+          pokemonColor: Color(0xFF34C677),
+          pathIcon: AppImages.icPlant,
+        );
       case 'Electric':
-        return Color(0xFFFFC700);
+        return TypePokemon(
+          pokemonColor: Color(0xFFFFC700),
+          pathIcon: AppImages.icElectric,
+        );
       case 'Ice':
-        return Color(0xFF77D3C3);
+        return TypePokemon(
+          pokemonColor: Color(0xFF77D3C3),
+          pathIcon: AppImages.icIce,
+        );
       case 'Fighting':
-        return Color(0xFFE80011);
+        return TypePokemon(
+          pokemonColor: Color(0xFFE80011),
+          pathIcon: AppImages.icFighter,
+        );
       case 'Poison':
-        return Color(0xFFC645E1);
+        return TypePokemon(
+          pokemonColor: Color(0xFFC645E1),
+          pathIcon: AppImages.icPoisonous,
+        );
       case 'Ground':
-        return Color(0xFFD17F46);
+        return TypePokemon(
+          pokemonColor: Color(0xFFD17F46),
+          pathIcon: AppImages.icTerrestrial,
+        );
       case 'Flying':
-        return Color(0xFF9FB9EB);
+        return TypePokemon(
+          pokemonColor: Color(0xFF9FB9EB),
+          pathIcon: AppImages.icFlying,
+        );
       case 'Psychic':
-        return Color(0xFFFE7571);
+        return TypePokemon(
+          pokemonColor: Color(0xFFFE7571),
+          pathIcon: AppImages.icPsychic,
+        );
       case 'Bug':
-        return Color(0xFFA2C629);
+        return TypePokemon(
+          pokemonColor: Color(0xFFA2C629),
+          pathIcon: AppImages.icInsect,
+        );
       case 'Rock':
-        return Color(0xFFD4AD30);
+        return TypePokemon(
+          pokemonColor: Color(0xFFD4AD30),
+          pathIcon: AppImages.icStone,
+        );
       case 'Ghost':
-        return Color(0xFF7272D2);
+        return TypePokemon(
+          pokemonColor: Color(0xFF7272D2),
+          pathIcon: AppImages.icGhost,
+        );
       case 'Dark':
-        return Color(0xFF5D5F6A);
+        return TypePokemon(
+          pokemonColor: Color(0xFF5D5F6A),
+          pathIcon: AppImages.icNocturnal,
+        );
       case 'Dragon':
-        return Color(0xFF0A6DCA);
+        return TypePokemon(
+          pokemonColor: Color(0xFF0A6DCA),
+          pathIcon: AppImages.icDragon,
+        );
       case 'Steel':
-        return Color(0xFF5AA7AA);
+        return TypePokemon(
+          pokemonColor: Color(0xFF5AA7AA),
+          pathIcon: AppImages.icSteel,
+        );
       case 'Fairy':
-        return Color(0xFFF29FE5);
+        return TypePokemon(
+          pokemonColor: Color(0xFFF29FE5),
+          pathIcon: AppImages.icFairy,
+        );
       default:
-        return Color(0xFF9B9BA3);
+        return TypePokemon(
+          pokemonColor: Color(0xFF9B9BA3),
+          pathIcon: AppImages.icNormal,
+        );
     }
   }
 }
