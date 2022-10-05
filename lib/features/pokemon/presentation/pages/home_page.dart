@@ -25,8 +25,13 @@ class HomePage extends GetView<HomeController> {
             children: [
               Container(
                 padding: EdgeInsets.only(top: kToolbarHeight),
-                child: Text('Pokédex'),
+                child: Text('Pokédex',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 28,
+                    )),
               ),
+              SizedBox(height: 12),
               Expanded(
                 child: ListView.builder(
                   padding: EdgeInsets.symmetric(horizontal: 12),
@@ -55,6 +60,7 @@ class ItemPokemon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final firstType = pokemon.types[0];
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: 12,
@@ -62,7 +68,7 @@ class ItemPokemon extends StatelessWidget {
       ),
       margin: EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
-        color: _getColorByType(pokemon.types[0]).pokemonColor,
+        color: _getColorByType(firstType).pokemonColor,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
@@ -76,11 +82,52 @@ class ItemPokemon extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Image.asset(_getColorByType(pokemon.types[0]).pathIcon),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('#${pokemon.number}'),
-              Text(pokemon.name),
+              Text(
+                '#${pokemon.number}',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 18,
+                ),
+              ),
+              SizedBox(height: 12),
+              Text(
+                pokemon.name,
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              SizedBox(height: 20),
+              Row(
+                children: pokemon.types
+                    .map((type) => Container(
+                          margin: EdgeInsets.only(right: 6),
+                          padding:
+                              EdgeInsets.symmetric(vertical: 4, horizontal: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white.withOpacity(0.3),
+                          ),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                _getColorByType(type).pathIcon,
+                                height: 16,
+                              ),
+                              Text(
+                                type,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              )
+                            ],
+                          ),
+                        ))
+                    .toList(),
+              )
             ],
           ),
           CachedNetworkImage(
