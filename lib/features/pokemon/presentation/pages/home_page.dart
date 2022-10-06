@@ -117,6 +117,7 @@ class ItemPokemon extends StatelessWidget {
                                 _getColorByType(type).pathIcon,
                                 height: 16,
                               ),
+                              SizedBox(width: 8),
                               Text(
                                 type,
                                 style: TextStyle(
